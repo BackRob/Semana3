@@ -1,57 +1,44 @@
 package org.example.Model;
 
 
+import org.example.Exception.GuiaInvalidoException;
+import org.example.Exception.PersonaInvalidoException;
 
 public class Guia extends Persona {
 
     private String especialidad;
 
 
-
-
-
     public Guia() {
-
         super();
-
-        this.especialidad = "sinEspecialidad";
-
-    }
-
-
-
-    public Guia(String nombre, String rut, int edad, String especialidad) {
-
-        super(nombre, rut, edad);
-
-        this.especialidad = especialidad;
+        this.especialidad = "SIN_ESPECIALIDAD";
 
     }
 
 
+
+    public Guia(String nombre, Rut rut, int edad, String especialidad,Direccion direccion)throws PersonaInvalidoException,GuiaInvalidoException {
+        super(nombre, rut, edad,direccion);
+        setEspecialidad(especialidad);
+    }
 
     public String getEspecialidad() {return especialidad;}
 
 
 
-    public void setEspecialidad(String especialidad) {
+    public void setEspecialidad(String especialidad)throws GuiaInvalidoException {
 
-        if (especialidad != null && !especialidad.trim().isEmpty()){
-
-            this.especialidad = especialidad;
-
+        if (especialidad == null ||especialidad.trim().isEmpty()){
+            throw new GuiaInvalidoException("Especialidad Invalida, Por Favor Ingresar Espacialidad Valida");
         }
-
+        this.especialidad = especialidad;
     }
 
 
 
     @Override
-
     public String toString(){
-
-        return super.toString() + "Especialidad: "+especialidad+"\n";
-
+        return "\n----Guia----\n"+super.toString() + "Especialidad: "+especialidad+"\n------------\n";
     }
 
 

@@ -8,23 +8,30 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        Guia guia1 = new Guia();
+        Guia guia1 = new Guia();//creacion de guia vacio
 
-        System.out.println(guia1);
+        System.out.println(guia1);//se muestra
 
-        guia1.setNombre("Brian Vallejos");
+        guia1.setNombre("Brian Vallejos");//le asignamos nombre
+        guia1.setEdad(25);//le asignamos edad
 
-        guia1.setEdad(25);
+        Rut rut1 = new Rut("20647205-7");//creamos el rut
+        guia1.setRut(rut1); //asignamos el rut
 
-        guia1.setRut("206472057");
+        try { //prueba del manejo de errores para la captura de errores personalizados
+            guia1.setEspecialidad("");//asignamos vacío
+        }catch (Exception e){
+            System.out.println("Error: "+e.getMessage()+"\n");
+        }
 
-        guia1.setEspecialidad("Escalada");
-        Direccion direcccion1 = new Direccion("Lonja Escalada", "Lo Prado", "Santiago", 1558);
+        Direccion direccion1 = new Direccion(  //Creacion de direccion
+                "Lonja Escalada",
+                "Lo Prado",
+                "Santiago",
+                1558);
+        guia1.setDireccion(direccion1);//Asignación de Direccion
 
-        guia1.setDireccion(direcccion1);
-
-        System.out.println(guia1);
-
+        System.out.println(guia1);//mostrar guia1 con datos seteados
 
 
     }
